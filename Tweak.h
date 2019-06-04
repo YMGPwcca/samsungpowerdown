@@ -1,6 +1,5 @@
-/*
-	The heart of the tweak!
-*/
+#import <spawn.h>
+
 @interface SBAlert : UIViewController
 @end
 

@@ -17,4 +17,4 @@ include $(THEOS_MAKE_PATH)/aggregate.mk
 internal-stage::
 	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
 	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/Library/Application\ Support/SamsungPowerDown$(ECHO_END)
-	$(ECHO_NOTHING)cp ./images/* $(THEOS_STAGING_DIR)/Library/Application\ Support/SamsungPowerDown/*$(ECHO_END)
+	$(ECHO_NOTHING)cp ./images/* $(THEOS_STAGING_DIR)/Library/Application\ Support/SamsungPowerDown/$(ECHO_END)

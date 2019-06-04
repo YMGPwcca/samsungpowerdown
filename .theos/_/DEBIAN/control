@@ -3,9 +3,9 @@ Name: SamsungPowerDown
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
 Description: Turn your boring Power Down view into Samsung's one!
-Depiction: 
+Depiction: https://devntnghia.github.io/depics/sspd.html
 Maintainer: DevNTNghia
 Author: DevNTNghia
 Section: Tweaks
-Version: 1.1-2+debug
-Installed-Size: 326
+Version: 1.1.1-1+debug
+Installed-Size: 394

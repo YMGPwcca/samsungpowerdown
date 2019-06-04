@@ -1,5 +1,5 @@
-/home/DevNTNghia/sspd/.theos/obj/debug/armv7/SSPD.m.b22b9f77.o: SSPD.m \
-  /home/DevNTNghia/theos/Prefix.pch \
+/home/DevNTNghia/samsungpowerdown/.theos/obj/debug/armv7/SSPD.m.fb36409a.o: \
+  SSPD.m /home/DevNTNghia/theos/Prefix.pch \
   /home/DevNTNghia/theos/vendor/include/_Prefix/BackwardsCompat.h \
   /home/DevNTNghia/theos/vendor/include/_Prefix/IOSMacros.h \
   /home/DevNTNghia/theos/vendor/include/HBLog.h \

@@ -138,10 +138,6 @@
 }
 
 /*
-	All UIView Action + Cancel
-*/
-
-/*
 	Safemode Action + Cancel
 */
 %new
@@ -153,7 +149,7 @@
 		safemodeLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+45);
 		safemodeView.transform = CGAffineTransformMakeScale(1.5, 1.5);
 		safemodeLabel.transform = CGAffineTransformMakeScale(1.5, 1.5);
-		mainView.backgroundColor = [UIColor colorWithRed:0.04 green:0.04 blue:0.04 alpha:1.0];
+		mainView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
 
 		shutdownView.alpha = 0.0f;
 		respringView.alpha = 0.0f;
@@ -194,7 +190,9 @@
 
 %new
 -(void)safemodeDo {
-	system("killall -SEGV SpringBoard");
+	pid_t pid;
+    const char* args[] = {"killall", "-SEGV", "SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
 /*
@@ -209,7 +207,7 @@
 		respringLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+45);
 		respringView.transform = CGAffineTransformMakeScale(1.5, 1.5);
 		respringLabel.transform = CGAffineTransformMakeScale(1.5, 1.5);
-		mainView.backgroundColor = [UIColor colorWithRed:0.04 green:0.04 blue:0.04 alpha:1.0];
+		mainView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
 
 		shutdownView.alpha = 0.0f;
 		safemodeView.alpha = 0.0f;
@@ -250,7 +248,9 @@
 
 %new
 -(void)respringDo {
-	system("killall -9 SpringBoard");
+	pid_t pid;
+    const char* args[] = {"killall", "-9", "SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
 /*
@@ -265,7 +265,7 @@
 		shutdownLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+45);
 		shutdownView.transform = CGAffineTransformMakeScale(1.5, 1.5);
 		shutdownLabel.transform = CGAffineTransformMakeScale(1.5, 1.5);
-		mainView.backgroundColor = [UIColor colorWithRed:0.04 green:0.04 blue:0.04 alpha:1.0];
+		mainView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
 
 		respringView.alpha = 0.0f;
 		safemodeView.alpha = 0.0f;
@@ -321,7 +321,7 @@
 		rebootLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+45);
 		rebootView.transform = CGAffineTransformMakeScale(1.5, 1.5);
 		rebootLabel.transform = CGAffineTransformMakeScale(1.5, 1.5);
-		mainView.backgroundColor = [UIColor colorWithRed:0.04 green:0.04 blue:0.04 alpha:1.0];
+		mainView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
 
 		shutdownView.alpha = 0.0f;
 		respringView.alpha = 0.0f;
