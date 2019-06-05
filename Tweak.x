@@ -7,9 +7,6 @@
 
 #import "Tweak.h"
 
-/*
-	Tweak
-*/
 %group mainTweak
 %hook SBPowerDownController
 -(void)viewDidLoad {

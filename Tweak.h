@@ -1,5 +1,9 @@
 #import <spawn.h>
+#define kImagesPath @"/Library/Application Support/SamsungPowerDown"
 
+/*
+    Interface + create UIViewController for PowerDownView
+*/
 @interface SBAlert : UIViewController
 @end
 
@@ -13,10 +17,8 @@
 -(void)shutdownAndReboot:(BOOL)arg1;
 @end
 
-#define kImagesPath @"/Library/Application Support/SamsungPowerDown"
-
 /*
-    Add some variables
+    Add some Objective-C variables
 */
 UIView *mainView;
 UIVisualEffectView *mainEffectView;
@@ -29,6 +31,9 @@ UILabel *respringLabel;
 UILabel *shutdownLabel;
 UILabel *safemodeLabel;
 
+/*
+    Add some C variables
+*/
 static int buttonSize = 0;
 
 static float buttonFloat = 80;
