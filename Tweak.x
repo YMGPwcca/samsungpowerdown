@@ -42,7 +42,7 @@
 	safemodeImageView.frame = safemodeView.bounds;
 
 	safemodeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-	safemodeLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelDistance1);
+	safemodeLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelSafemode);
 	[safemodeLabel setText:@"Safe Mode"];
 	[safemodeLabel setTextColor:[UIColor whiteColor]];
 	safemodeLabel.textAlignment = NSTextAlignmentCenter;
@@ -63,7 +63,7 @@
 	respringImageView.frame = respringView.bounds;
 
 	respringLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-	respringLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelDistance2);
+	respringLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelRespring);
 	[respringLabel setText:@"Respring"];
 	[respringLabel setTextColor:[UIColor whiteColor]];
 	respringLabel.textAlignment = NSTextAlignmentCenter;
@@ -84,7 +84,7 @@
 	shutdownImageView.frame = shutdownView.bounds;
 	
 	shutdownLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-	shutdownLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelDistance3);
+	shutdownLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelShutdown);
 	[shutdownLabel setText:@"Power Off"];
 	[shutdownLabel setTextColor:[UIColor whiteColor]];
 	shutdownLabel.textAlignment = NSTextAlignmentCenter;
@@ -105,7 +105,7 @@
 	rebootImageView.frame = rebootView.bounds;
 
 	rebootLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-	rebootLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelDistance4);
+	rebootLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelReboot);
 	[rebootLabel setText:@"Reboot"];
 	[rebootLabel setTextColor:[UIColor whiteColor]];
 	rebootLabel.textAlignment = NSTextAlignmentCenter;
@@ -392,11 +392,6 @@ void reloadPreferences() {
 		buttonFloat = 80;
 		buttonDistance1 = 80;
 		buttonDistance2 = 240;
-
-		labelDistance1 = 180;
-		labelDistance2 = 20;
-		labelDistance3 = 140;
-		labelDistance4 = 300;
 	}
 	else if (buttonSize == 1) {
 		buttonFloat = 70;
@@ -407,16 +402,21 @@ void reloadPreferences() {
 		labelDistance2 = 10;
 		labelDistance3 = 130;
 		labelDistance4 = 270;
+
+		labelSafemode = 150;
+		labelRespring = 10;
+		labelShutdown = 130;
+		labelReboot = 270;
 	}
 	else if (buttonSize == 2) {
 		buttonFloat = 60;
 		buttonDistance1 = 60;
 		buttonDistance2 = 180;
-
-		labelDistance1 = 130;
-		labelDistance2 = 10;
-		labelDistance3 = 110;
-		labelDistance4 = 230;
+		
+		labelSafemode = 130;
+		labelRespring = 10;
+		labelShutdown = 110;
+		labelReboot = 230;
 	}
 }
 

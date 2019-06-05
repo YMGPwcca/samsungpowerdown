@@ -39,4 +39,10 @@
     posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
+-(void)submit {
+	pid_t pid;
+    const char* args[] = {"killall", "-9", "backboardd", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
+}
+
 @end

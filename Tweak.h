@@ -30,11 +30,12 @@ UILabel *shutdownLabel;
 UILabel *safemodeLabel;
 
 static int buttonSize = 0;
+
 static float buttonFloat = 80;
 static float buttonDistance1 = 80;
 static float buttonDistance2 = 240;
 
-static float labelDistance1 = 180;
-static float labelDistance2 = 20;
-static float labelDistance3 = 140;
-static float labelDistance4 = 300;
+static float labelSafemode = 180;
+static float labelRespring = 20;
+static float labelShutdown = 140;
+static float labelReboot = 300;
