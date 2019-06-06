@@ -118,6 +118,16 @@
             <key>label</key>
             <string>Respring</string>
         </dict>
+        <dict>
+            <key>action</key>
+            <string>respring</string>
+            <key>cell</key>
+            <string>PSButtonCell</string>
+            <key>footerText</key>
+            <string>You can customize icons in /Library/Application Support/SamsungPowerDown/
+
+Remember to change your icon name like the default icon.</string>
+        </dict>
 	</array>
 	<key>title</key>
 	<string>SamsungPowerDown</string>

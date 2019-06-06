@@ -7,7 +7,6 @@
 
 #import "Tweak.h"
 
-%group mainTweak
 %hook SBPowerDownController
 -(void)viewDidLoad {
 	[self showView];
@@ -28,6 +27,7 @@
 	/*
 		Safemode Button
 	*/
+
 	safemodeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonFloat, buttonFloat)];
 	safemodeView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-buttonDistance2);
 	UITapGestureRecognizer *safemodeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(safemodeAct)];
@@ -167,7 +167,7 @@
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
 		safemodeView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-buttonDistance2);
-		safemodeLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelDistance1);
+		safemodeLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelSafemode);
 		safemodeView.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		safemodeLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		mainView.backgroundColor = [UIColor clearColor];
@@ -225,7 +225,7 @@
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
 		respringView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-buttonDistance1);
-		respringLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelDistance2);
+		respringLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-labelRespring);
 		respringView.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		respringLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		mainView.backgroundColor = [UIColor clearColor];
@@ -283,7 +283,7 @@
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
 		shutdownView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+buttonDistance1);
-		shutdownLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelDistance3);
+		shutdownLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelShutdown);
 		shutdownView.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		shutdownLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		mainView.backgroundColor = [UIColor clearColor];
@@ -339,7 +339,7 @@
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
 		rebootView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+buttonDistance2);
-		rebootLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelDistance4);
+		rebootLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+labelReboot);
 		rebootView.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		rebootLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
 		mainView.backgroundColor = [UIColor clearColor];
@@ -379,7 +379,6 @@
 	}];
 }
 %end
-%end
 
 void reloadPreferences() {
 	NSMutableDictionary *getpref = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.devntnghia.sspd.plist"];
@@ -416,18 +415,11 @@ void reloadPreferences() {
 		labelReboot = 230;
 	}
 
-	if (safemodeButton = NO) {
-		safemodeView = nil;
-		safemodeLabel = nil;
+	if (safemodeButton == YES) {
+		NSLog(@"It's enabled_DevNTNghia_SSPD");
 	}
-	else if (respringButton = NO) {
-		
-	}
-	else if (poweroffButton = NO) {
-		
-	}
-	else if (rebootButton = NO) {
-		
+	else if (safemodeButton == NO) {
+		NSLog(@"It's disabled_DevNTNghia_SSPD");
 	}
 }
 
@@ -437,6 +429,4 @@ void reloadPreferences() {
 %ctor {
 	reloadPreferences();
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadPreferences, CFSTR("com.devntnghia.sspd.preferencechanged"), NULL, kNilOptions);
-	
-	%init(mainTweak);
 }
