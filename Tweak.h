@@ -22,14 +22,16 @@
 */
 UIView *mainView;
 UIVisualEffectView *mainEffectView;
-UIView *shutdownView;
-UIView *respringView;
+
 UIView *safemodeView;
+UIView *respringView;
+UIView *shutdownView;
 UIView *rebootView;
-UILabel *rebootLabel;
+
+UILabel *safemodeLabel;
 UILabel *respringLabel;
 UILabel *shutdownLabel;
-UILabel *safemodeLabel;
+UILabel *rebootLabel;
 
 /*
     Add some C variables
@@ -44,3 +46,8 @@ static float labelSafemode = 180;
 static float labelRespring = 20;
 static float labelShutdown = 140;
 static float labelReboot = 300;
+
+static bool safemodeButton = YES;
+static bool respringButton = YES;
+static bool poweroffButton = YES;
+static bool rebootButton = YES;

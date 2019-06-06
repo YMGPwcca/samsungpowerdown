@@ -385,6 +385,11 @@ void reloadPreferences() {
 	NSMutableDictionary *getpref = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.devntnghia.sspd.plist"];
 	buttonSize = [([getpref objectForKey:@"buttonSize"] ?: @(0)) intValue];
 
+	safemodeButton = [([getpref objectForKey:@"safemodeButton"] ?: @(YES)) boolValue];
+	respringButton = [([getpref objectForKey:@"respringButton"] ?: @(YES)) boolValue];
+	poweroffButton = [([getpref objectForKey:@"poweroffButton"] ?: @(YES)) boolValue];
+	rebootButton = [([getpref objectForKey:@"rebootButton"] ?: @(YES)) boolValue];
+
 	if (buttonSize == 0) {
 		buttonFloat = 80;
 		buttonDistance1 = 80;
@@ -394,11 +399,6 @@ void reloadPreferences() {
 		buttonFloat = 70;
 		buttonDistance1 = 70;
 		buttonDistance2 = 210;
-
-		labelDistance1 = 150;
-		labelDistance2 = 10;
-		labelDistance3 = 130;
-		labelDistance4 = 270;
 
 		labelSafemode = 150;
 		labelRespring = 10;
@@ -414,6 +414,20 @@ void reloadPreferences() {
 		labelRespring = 10;
 		labelShutdown = 110;
 		labelReboot = 230;
+	}
+
+	if (safemodeButton = NO) {
+		safemodeView = nil;
+		safemodeLabel = nil;
+	}
+	else if (respringButton = NO) {
+		
+	}
+	else if (poweroffButton = NO) {
+		
+	}
+	else if (rebootButton = NO) {
+		
 	}
 }
 

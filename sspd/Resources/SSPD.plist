@@ -14,13 +14,11 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Button Options</string>
+			<string>Button Size</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSegmentCell</string>
-			<key>label</key>
-			<string>Button Size</string>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaults</key>
@@ -44,6 +42,68 @@
 			<key>PostNotification</key>
 			<string>com.devntnghia.sspd.preferencechanged</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Enable Button</string>
+		</dict>
+		<dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.devntnghia.sspd</string>
+            <key>key</key>
+            <string>safemodeButton</string>
+            <key>label</key>
+            <string>Safe Mode button</string>
+            <key>PostNotification</key>
+            <string>com.devntnghia.sspd.preferencechanged</string>
+        </dict>
+		<dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.devntnghia.sspd</string>
+            <key>key</key>
+            <string>respringButton</string>
+            <key>label</key>
+            <string>Respring button</string>
+            <key>PostNotification</key>
+            <string>com.devntnghia.sspd.preferencechanged</string>
+        </dict>
+		<dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.devntnghia.sspd</string>
+            <key>key</key>
+            <string>poweroffButton</string>
+            <key>label</key>
+            <string>Power Off button</string>
+            <key>PostNotification</key>
+            <string>com.devntnghia.sspd.preferencechanged</string>
+        </dict>
+		<dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.devntnghia.sspd</string>
+            <key>key</key>
+            <string>rebootButton</string>
+            <key>label</key>
+            <string>Reboot button</string>
+            <key>PostNotification</key>
+            <string>com.devntnghia.sspd.preferencechanged</string>
+        </dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
