@@ -37,6 +37,7 @@ UILabel *rebootLabel;
     Add some C variables
 */
 static int buttonSize = 0;
+static bool labelEnabled = YES;
 
 static float buttonFloat = 80;
 static float buttonDistance1 = 80;
@@ -47,7 +48,5 @@ static float labelRespring = 20;
 static float labelShutdown = 140;
 static float labelReboot = 300;
 
-static bool safemodeButton = YES;
-static bool respringButton = YES;
-static bool poweroffButton = YES;
-static bool rebootButton = YES;
+static float labelWidth = 100;
+static float labelHeight = 50;

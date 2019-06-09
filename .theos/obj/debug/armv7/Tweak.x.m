@@ -1,22 +1,48 @@
-/*
-	Developed by DevNTNghia
-	Created Date: 01/06/2019
+#line 1 "Tweak.x"
 
-	Project: Samsung PowerDown
-*/
+
+
+
+
+
 
 #import "Tweak.h"
 
-%hook SBPowerDownController
--(void)viewDidLoad {
+
+#include <substrate.h>
+#if defined(__clang__)
+#if __has_feature(objc_arc)
+#define _LOGOS_SELF_TYPE_NORMAL __unsafe_unretained
+#define _LOGOS_SELF_TYPE_INIT __attribute__((ns_consumed))
+#define _LOGOS_SELF_CONST const
+#define _LOGOS_RETURN_RETAINED __attribute__((ns_returns_retained))
+#else
+#define _LOGOS_SELF_TYPE_NORMAL
+#define _LOGOS_SELF_TYPE_INIT
+#define _LOGOS_SELF_CONST
+#define _LOGOS_RETURN_RETAINED
+#endif
+#else
+#define _LOGOS_SELF_TYPE_NORMAL
+#define _LOGOS_SELF_TYPE_INIT
+#define _LOGOS_SELF_CONST
+#define _LOGOS_RETURN_RETAINED
+#endif
+
+@class SBPowerDownController; 
+static void (*_logos_orig$_ungrouped$SBPowerDownController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$showView(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$safemodeAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$cancelSafemode(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$safemodeDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$respringAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$cancelRespring(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$respringDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$shutdownAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$cancelShutdown(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$shutdownDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$rebootAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$cancelReboot(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$rebootDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBPowerDownController$close(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST, SEL); 
+
+#line 10 "Tweak.x"
+
+static void _logos_method$_ungrouped$SBPowerDownController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	[self showView];
 }
 
-%new
--(void)showView {
-	/*
-		Create main view with blur effect
-	*/
+
+static void _logos_method$_ungrouped$SBPowerDownController$showView(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
+	
+
+
 	mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
 	[mainView addGestureRecognizer:mainTap];
@@ -24,9 +50,9 @@
 	mainEffectView.frame = mainView.bounds;
 	mainEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
-	/*
-		Safemode Button
-	*/
+	
+
+
 	safemodeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonFloat, buttonFloat)];
 	safemodeView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-buttonDistance2);
 	UITapGestureRecognizer *safemodeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(safemodeAct)];
@@ -45,9 +71,9 @@
 	safemodeLabel.adjustsFontSizeToFitWidth = YES;
 	safemodeLabel.numberOfLines = 1;
 
-	/*
-		Respring button
-	*/
+	
+
+
 	respringView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonFloat, buttonFloat)];
 	respringView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-buttonDistance1);
 	UITapGestureRecognizer *respringTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respringAct)];
@@ -66,9 +92,9 @@
 	respringLabel.adjustsFontSizeToFitWidth = YES;
 	respringLabel.numberOfLines = 1;
 
-	/*
-		Shutdown button
-	*/
+	
+
+
 	shutdownView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonFloat, buttonFloat)];
 	shutdownView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+buttonDistance1);
 	UITapGestureRecognizer *shutdownTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shutdownAct)];
@@ -87,9 +113,9 @@
 	shutdownLabel.adjustsFontSizeToFitWidth = YES;
 	shutdownLabel.numberOfLines = 1;
 
-	/*
-		Reboot button
-	*/
+	
+
+
 	rebootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonFloat, buttonFloat)];
 	rebootView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+buttonDistance2);
 	UITapGestureRecognizer *rebootTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rebootAct)];
@@ -108,9 +134,9 @@
 	rebootLabel.adjustsFontSizeToFitWidth = YES;
 	rebootLabel.numberOfLines = 1;
 
-	/*
-		Make them visible slowly
-	*/
+	
+
+
 	mainView.alpha = 0.0f;
 	self.view = mainView;
 	[UIView animateWithDuration:0.25 animations:^()
@@ -133,11 +159,11 @@
 	completion:nil];
 }
 
-/*
-	Safemode Action + Cancel
-*/
-%new
--(void)safemodeAct {
+
+
+
+
+static void _logos_method$_ungrouped$SBPowerDownController$safemodeAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelSafemode)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -160,8 +186,8 @@
 	completion:nil];
 }
 
-%new
--(void)cancelSafemode {
+
+static void _logos_method$_ungrouped$SBPowerDownController$cancelSafemode(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -184,18 +210,18 @@
 	completion:nil];
 }
 
-%new
--(void)safemodeDo {
+
+static void _logos_method$_ungrouped$SBPowerDownController$safemodeDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	pid_t pid;
     const char* args[] = {"killall", "-SEGV", "SpringBoard", NULL};
     posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
-/*
-	Respring Action + Cancel
-*/
-%new
--(void)respringAct {
+
+
+
+
+static void _logos_method$_ungrouped$SBPowerDownController$respringAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelRespring)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -218,8 +244,8 @@
 	completion:nil];
 }
 
-%new
--(void)cancelRespring {
+
+static void _logos_method$_ungrouped$SBPowerDownController$cancelRespring(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -242,18 +268,18 @@
 	completion:nil];
 }
 
-%new
--(void)respringDo {
+
+static void _logos_method$_ungrouped$SBPowerDownController$respringDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	pid_t pid;
     const char* args[] = {"killall", "-9", "SpringBoard", NULL};
     posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
-/*
-	Shutdown Action + Cancel
-*/
-%new
--(void)shutdownAct {
+
+
+
+
+static void _logos_method$_ungrouped$SBPowerDownController$shutdownAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelShutdown)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -276,8 +302,8 @@
 	completion:nil];
 }
 
-%new
--(void)cancelShutdown {
+
+static void _logos_method$_ungrouped$SBPowerDownController$cancelShutdown(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -300,16 +326,16 @@
 	completion:nil];
 }
 
-%new
--(void)shutdownDo {
+
+static void _logos_method$_ungrouped$SBPowerDownController$shutdownDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	[[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:NO];
 }
 
-/*
-	Reboot Action + Cancel
-*/
-%new
--(void)rebootAct {
+
+
+
+
+static void _logos_method$_ungrouped$SBPowerDownController$rebootAct(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelReboot)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -332,8 +358,8 @@
 	completion:nil];
 }
 
-%new
--(void)cancelReboot {
+
+static void _logos_method$_ungrouped$SBPowerDownController$cancelReboot(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	UITapGestureRecognizer *mainTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
 	[mainView addGestureRecognizer:mainTap];
 	[UIView animateWithDuration:0.25 animations:^{
@@ -356,17 +382,17 @@
 	completion:nil];
 }
 
-%new
--(void)rebootDo {
+
+static void _logos_method$_ungrouped$SBPowerDownController$rebootDo(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	[[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
 }
 
 
-/*
-	Close mainView
-*/
-%new
--(void)close {
+
+
+
+
+static void _logos_method$_ungrouped$SBPowerDownController$close(_LOGOS_SELF_TYPE_NORMAL SBPowerDownController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	[UIView animateWithDuration:0.25 animations:^()
 	{
 		self.view.alpha = 0.0f;
@@ -377,7 +403,7 @@
 		}
 	}];
 }
-%end
+
 
 void reloadPreferences() {
 	NSMutableDictionary *getpref = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.devntnghia.sspd.plist"];
@@ -418,10 +444,13 @@ void reloadPreferences() {
 
 }
 
-/*
-	Load tweak after Respring
-*/
-%ctor {
+
+
+
+static __attribute__((constructor)) void _logosLocalCtor_6d6cac4b(int __unused argc, char __unused **argv, char __unused **envp) {
 	reloadPreferences();
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadPreferences, CFSTR("com.devntnghia.sspd.preferencechanged"), NULL, kNilOptions);
 }
+static __attribute__((constructor)) void _logosLocalInit() {
+{Class _logos_class$_ungrouped$SBPowerDownController = objc_getClass("SBPowerDownController"); MSHookMessageEx(_logos_class$_ungrouped$SBPowerDownController, @selector(viewDidLoad), (IMP)&_logos_method$_ungrouped$SBPowerDownController$viewDidLoad, (IMP*)&_logos_orig$_ungrouped$SBPowerDownController$viewDidLoad);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(showView), (IMP)&_logos_method$_ungrouped$SBPowerDownController$showView, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(safemodeAct), (IMP)&_logos_method$_ungrouped$SBPowerDownController$safemodeAct, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(cancelSafemode), (IMP)&_logos_method$_ungrouped$SBPowerDownController$cancelSafemode, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(safemodeDo), (IMP)&_logos_method$_ungrouped$SBPowerDownController$safemodeDo, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(respringAct), (IMP)&_logos_method$_ungrouped$SBPowerDownController$respringAct, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(cancelRespring), (IMP)&_logos_method$_ungrouped$SBPowerDownController$cancelRespring, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(respringDo), (IMP)&_logos_method$_ungrouped$SBPowerDownController$respringDo, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(shutdownAct), (IMP)&_logos_method$_ungrouped$SBPowerDownController$shutdownAct, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(cancelShutdown), (IMP)&_logos_method$_ungrouped$SBPowerDownController$cancelShutdown, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(shutdownDo), (IMP)&_logos_method$_ungrouped$SBPowerDownController$shutdownDo, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(rebootAct), (IMP)&_logos_method$_ungrouped$SBPowerDownController$rebootAct, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(cancelReboot), (IMP)&_logos_method$_ungrouped$SBPowerDownController$cancelReboot, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(rebootDo), (IMP)&_logos_method$_ungrouped$SBPowerDownController$rebootDo, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$SBPowerDownController, @selector(close), (IMP)&_logos_method$_ungrouped$SBPowerDownController$close, _typeEncoding); }} }
+#line 428 "Tweak.x"
