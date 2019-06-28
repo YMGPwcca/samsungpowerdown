@@ -2,12 +2,12 @@
 #define kImagesPath @"/Library/Application Support/SamsungPowerDown"
 
 /*
-    Interface + create UIViewController for PowerDownView
+    Interface + create UIViewController for SBPowerDownController
 */
-@interface SBAlert : UIViewController
-@end
+//@interface SBAlert : UIViewController
+//@end
 
-@interface SBPowerDownController : SBAlert
+@interface SBPowerDownController : UIViewController
 -(void)cancel;
 -(void)showView;
 @end
